@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BancoAgendamentoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AGENDA">
+          <Key>
+            <PropertyRef Name="ID_AGENDA" />
+          </Key>
+          <Property Name="ID_AGENDA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOME" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="TEL_PRINCIPAL" Type="varchar" MaxLength="14" Nullable="false" />
+          <Property Name="TIPO_TEL_PRINCIPAL" Type="varchar" MaxLength="20" />
+          <Property Name="CEP_RESIDENCIAL" Type="varchar" MaxLength="11" />
+          <Property Name="UF_RESIDENCIAL" Type="varchar" MaxLength="2" />
+          <Property Name="LOCALIDADE_RESIDENCIAL" Type="varchar" MaxLength="50" />
+          <Property Name="LOGRADOURO_RESIDENCIAL" Type="varchar" MaxLength="100" />
+          <Property Name="NUMERO_RESIDENCIAL" Type="varchar" MaxLength="9" />
+          <Property Name="COMPLEMENTO_RESIDENCIAL" Type="varchar" MaxLength="30" />
+          <Property Name="BAIRRO_RESIDENCIAL" Type="varchar" MaxLength="40" />
+          <Property Name="NOME_EMPRESA" Type="varchar" MaxLength="50" />
+          <Property Name="CARGO_EMPRESA" Type="varchar" MaxLength="30" />
+          <Property Name="CEP_EMPRESA" Type="varchar" MaxLength="11" />
+          <Property Name="UF_EMPRESA" Type="varchar" MaxLength="2" />
+          <Property Name="LOCALIDADE_EMPRESA" Type="varchar" MaxLength="50" />
+          <Property Name="LOGRADOURO_EMPRESA" Type="varchar" MaxLength="100" />
+          <Property Name="NUMERO_EMPRESA" Type="varchar" MaxLength="9" />
+          <Property Name="COMPLEMENTO_EMPRESA" Type="varchar" MaxLength="30" />
+          <Property Name="BAIRRO_EMPRESA" Type="varchar" MaxLength="40" />
+          <Property Name="FLAG_EXCLUIDO" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="EMAIL">
+          <Key>
+            <PropertyRef Name="ID_EMAIL" />
+          </Key>
+          <Property Name="ID_EMAIL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TIPO_EMAIL" Type="varchar" MaxLength="20" />
+          <Property Name="AGENDA_ID_AGENDA" Type="int" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="TELEFONE">
+          <Key>
+            <PropertyRef Name="ID_TELEFONE" />
+          </Key>
+          <Property Name="ID_TELEFONE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TEL" Type="varchar" MaxLength="14" Nullable="false" />
+          <Property Name="TIPO_TEL" Type="varchar" MaxLength="20" />
+          <Property Name="AGENDA_ID_AGENDA" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__EMAIL__AGENDA_ID__286302EC">
+          <End Role="AGENDA" Type="Self.AGENDA" Multiplicity="1" />
+          <End Role="EMAIL" Type="Self.EMAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AGENDA">
+              <PropertyRef Name="ID_AGENDA" />
+            </Principal>
+            <Dependent Role="EMAIL">
+              <PropertyRef Name="AGENDA_ID_AGENDA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TELEFONE__AGENDA__25869641">
+          <End Role="AGENDA" Type="Self.AGENDA" Multiplicity="1" />
+          <End Role="TELEFONE" Type="Self.TELEFONE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AGENDA">
+              <PropertyRef Name="ID_AGENDA" />
+            </Principal>
+            <Dependent Role="TELEFONE">
+              <PropertyRef Name="AGENDA_ID_AGENDA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BancoAgendamentoModelStoreContainer">
+          <EntitySet Name="AGENDA" EntityType="Self.AGENDA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EMAIL" EntityType="Self.EMAIL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TELEFONE" EntityType="Self.TELEFONE" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__EMAIL__AGENDA_ID__286302EC" Association="Self.FK__EMAIL__AGENDA_ID__286302EC">
+            <End Role="AGENDA" EntitySet="AGENDA" />
+            <End Role="EMAIL" EntitySet="EMAIL" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TELEFONE__AGENDA__25869641" Association="Self.FK__TELEFONE__AGENDA__25869641">
+            <End Role="AGENDA" EntitySet="AGENDA" />
+            <End Role="TELEFONE" EntitySet="TELEFONE" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BancoAgendamentoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AGENDA">
+          <Key>
+            <PropertyRef Name="ID_AGENDA" />
+          </Key>
+          <Property Name="ID_AGENDA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOME" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TEL_PRINCIPAL" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TIPO_TEL_PRINCIPAL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CEP_RESIDENCIAL" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="UF_RESIDENCIAL" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="LOCALIDADE_RESIDENCIAL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LOGRADOURO_RESIDENCIAL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NUMERO_RESIDENCIAL" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="COMPLEMENTO_RESIDENCIAL" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="BAIRRO_RESIDENCIAL" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="NOME_EMPRESA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CARGO_EMPRESA" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CEP_EMPRESA" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="UF_EMPRESA" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="LOCALIDADE_EMPRESA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LOGRADOURO_EMPRESA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NUMERO_EMPRESA" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="COMPLEMENTO_EMPRESA" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="BAIRRO_EMPRESA" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EMAIL" Relationship="Self.FK__EMAIL__AGENDA_ID__286302EC" FromRole="AGENDA" ToRole="EMAIL" />
+          <NavigationProperty Name="TELEFONE" Relationship="Self.FK__TELEFONE__AGENDA__25869641" FromRole="AGENDA" ToRole="TELEFONE" />
+          <Property Name="FLAG_EXCLUIDO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="EMAIL">
+          <Key>
+            <PropertyRef Name="ID_EMAIL" />
+          </Key>
+          <Property Name="ID_EMAIL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TIPO_EMAIL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AGENDA_ID_AGENDA" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AGENDA" Relationship="Self.FK__EMAIL__AGENDA_ID__286302EC" FromRole="EMAIL" ToRole="AGENDA" />
+          <Property Name="EMAIL1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TELEFONE">
+          <Key>
+            <PropertyRef Name="ID_TELEFONE" />
+          </Key>
+          <Property Name="ID_TELEFONE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TEL" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TIPO_TEL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AGENDA_ID_AGENDA" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AGENDA" Relationship="Self.FK__TELEFONE__AGENDA__25869641" FromRole="TELEFONE" ToRole="AGENDA" />
+        </EntityType>
+        <Association Name="FK__EMAIL__AGENDA_ID__286302EC">
+          <End Role="AGENDA" Type="Self.AGENDA" Multiplicity="1" />
+          <End Role="EMAIL" Type="Self.EMAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AGENDA">
+              <PropertyRef Name="ID_AGENDA" />
+            </Principal>
+            <Dependent Role="EMAIL">
+              <PropertyRef Name="AGENDA_ID_AGENDA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TELEFONE__AGENDA__25869641">
+          <End Role="AGENDA" Type="Self.AGENDA" Multiplicity="1" />
+          <End Role="TELEFONE" Type="Self.TELEFONE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AGENDA">
+              <PropertyRef Name="ID_AGENDA" />
+            </Principal>
+            <Dependent Role="TELEFONE">
+              <PropertyRef Name="AGENDA_ID_AGENDA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BancoAgendamentoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AGENDA" EntityType="Self.AGENDA" />
+          <EntitySet Name="EMAIL" EntityType="Self.EMAIL" />
+          <EntitySet Name="TELEFONE" EntityType="Self.TELEFONE" />
+          <AssociationSet Name="FK__EMAIL__AGENDA_ID__286302EC" Association="Self.FK__EMAIL__AGENDA_ID__286302EC">
+            <End Role="AGENDA" EntitySet="AGENDA" />
+            <End Role="EMAIL" EntitySet="EMAIL" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TELEFONE__AGENDA__25869641" Association="Self.FK__TELEFONE__AGENDA__25869641">
+            <End Role="AGENDA" EntitySet="AGENDA" />
+            <End Role="TELEFONE" EntitySet="TELEFONE" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BancoAgendamentoModelStoreContainer" CdmEntityContainer="BancoAgendamentoEntities">
+          <EntitySetMapping Name="AGENDA">
+            <EntityTypeMapping TypeName="BancoAgendamentoModel.AGENDA">
+              <MappingFragment StoreEntitySet="AGENDA">
+                <ScalarProperty Name="FLAG_EXCLUIDO" ColumnName="FLAG_EXCLUIDO" />
+                <ScalarProperty Name="ID_AGENDA" ColumnName="ID_AGENDA" />
+                <ScalarProperty Name="NOME" ColumnName="NOME" />
+                <ScalarProperty Name="TEL_PRINCIPAL" ColumnName="TEL_PRINCIPAL" />
+                <ScalarProperty Name="TIPO_TEL_PRINCIPAL" ColumnName="TIPO_TEL_PRINCIPAL" />
+                <ScalarProperty Name="CEP_RESIDENCIAL" ColumnName="CEP_RESIDENCIAL" />
+                <ScalarProperty Name="UF_RESIDENCIAL" ColumnName="UF_RESIDENCIAL" />
+                <ScalarProperty Name="LOCALIDADE_RESIDENCIAL" ColumnName="LOCALIDADE_RESIDENCIAL" />
+                <ScalarProperty Name="LOGRADOURO_RESIDENCIAL" ColumnName="LOGRADOURO_RESIDENCIAL" />
+                <ScalarProperty Name="NUMERO_RESIDENCIAL" ColumnName="NUMERO_RESIDENCIAL" />
+                <ScalarProperty Name="COMPLEMENTO_RESIDENCIAL" ColumnName="COMPLEMENTO_RESIDENCIAL" />
+                <ScalarProperty Name="BAIRRO_RESIDENCIAL" ColumnName="BAIRRO_RESIDENCIAL" />
+                <ScalarProperty Name="NOME_EMPRESA" ColumnName="NOME_EMPRESA" />
+                <ScalarProperty Name="CARGO_EMPRESA" ColumnName="CARGO_EMPRESA" />
+                <ScalarProperty Name="CEP_EMPRESA" ColumnName="CEP_EMPRESA" />
+                <ScalarProperty Name="UF_EMPRESA" ColumnName="UF_EMPRESA" />
+                <ScalarProperty Name="LOCALIDADE_EMPRESA" ColumnName="LOCALIDADE_EMPRESA" />
+                <ScalarProperty Name="LOGRADOURO_EMPRESA" ColumnName="LOGRADOURO_EMPRESA" />
+                <ScalarProperty Name="NUMERO_EMPRESA" ColumnName="NUMERO_EMPRESA" />
+                <ScalarProperty Name="COMPLEMENTO_EMPRESA" ColumnName="COMPLEMENTO_EMPRESA" />
+                <ScalarProperty Name="BAIRRO_EMPRESA" ColumnName="BAIRRO_EMPRESA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMAIL">
+            <EntityTypeMapping TypeName="BancoAgendamentoModel.EMAIL">
+              <MappingFragment StoreEntitySet="EMAIL">
+                <ScalarProperty Name="EMAIL1" ColumnName="EMAIL" />
+                <ScalarProperty Name="ID_EMAIL" ColumnName="ID_EMAIL" />
+                <ScalarProperty Name="TIPO_EMAIL" ColumnName="TIPO_EMAIL" />
+                <ScalarProperty Name="AGENDA_ID_AGENDA" ColumnName="AGENDA_ID_AGENDA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TELEFONE">
+            <EntityTypeMapping TypeName="BancoAgendamentoModel.TELEFONE">
+              <MappingFragment StoreEntitySet="TELEFONE">
+                <ScalarProperty Name="ID_TELEFONE" ColumnName="ID_TELEFONE" />
+                <ScalarProperty Name="TEL" ColumnName="TEL" />
+                <ScalarProperty Name="TIPO_TEL" ColumnName="TIPO_TEL" />
+                <ScalarProperty Name="AGENDA_ID_AGENDA" ColumnName="AGENDA_ID_AGENDA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
