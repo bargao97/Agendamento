@@ -13,10 +13,10 @@ namespace Agendamento.Database
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class BancoAgendamentoEntities : DbContext
+    public partial class AGENDAMENTOEntities : DbContext
     {
-        public BancoAgendamentoEntities()
-            : base("name=BancoAgendamentoEntities")
+        public AGENDAMENTOEntities()
+            : base("name=AGENDAMENTOEntities")
         {
         }
     

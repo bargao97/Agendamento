@@ -4,12 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="5772057b0f644add9f51223ae39f5191" Name="Diagram1" ZoomLevel="81">
-        <EntityTypeShape EntityType="BancoAgendamentoModel.AGENDA" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="BancoAgendamentoModel.EMAIL" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BancoAgendamentoModel.TELEFONE" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
-        <AssociationConnector Association="BancoAgendamentoModel.FK__EMAIL__AGENDA_ID__286302EC" ManuallyRouted="false" />
-        <AssociationConnector Association="BancoAgendamentoModel.FK__TELEFONE__AGENDA__25869641" ManuallyRouted="false" />
+      <Diagram DiagramId="ca402d6474e44ad0a25f7dc52f3aab4e" Name="Diagram1" ZoomLevel="81">
+        <EntityTypeShape EntityType="AGENDAMENTOModel.AGENDA" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AGENDAMENTOModel.EMAIL" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AGENDAMENTOModel.TELEFONE" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <AssociationConnector Association="AGENDAMENTOModel.FK__EMAIL__AGENDA_ID__15502E78" ManuallyRouted="false" />
+        <AssociationConnector Association="AGENDAMENTOModel.FK__TELEFONE__AGENDA__1273C1CD" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

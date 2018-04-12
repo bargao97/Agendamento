@@ -16,7 +16,7 @@ namespace Agendamento
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Agendamento());
+            Application.Run(new VerAgendamento());
         }
     }
 }

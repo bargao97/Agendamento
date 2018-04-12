@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="BancoAgendamentoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="AGENDAMENTOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AGENDA">
           <Key>
             <PropertyRef Name="ID_AGENDA" />
@@ -49,7 +49,7 @@
           <Property Name="TIPO_TEL" Type="varchar" MaxLength="20" />
           <Property Name="AGENDA_ID_AGENDA" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK__EMAIL__AGENDA_ID__286302EC">
+        <Association Name="FK__EMAIL__AGENDA_ID__15502E78">
           <End Role="AGENDA" Type="Self.AGENDA" Multiplicity="1" />
           <End Role="EMAIL" Type="Self.EMAIL" Multiplicity="*" />
           <ReferentialConstraint>
@@ -61,7 +61,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TELEFONE__AGENDA__25869641">
+        <Association Name="FK__TELEFONE__AGENDA__1273C1CD">
           <End Role="AGENDA" Type="Self.AGENDA" Multiplicity="1" />
           <End Role="TELEFONE" Type="Self.TELEFONE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -73,15 +73,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="BancoAgendamentoModelStoreContainer">
+        <EntityContainer Name="AGENDAMENTOModelStoreContainer">
           <EntitySet Name="AGENDA" EntityType="Self.AGENDA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EMAIL" EntityType="Self.EMAIL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TELEFONE" EntityType="Self.TELEFONE" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__EMAIL__AGENDA_ID__286302EC" Association="Self.FK__EMAIL__AGENDA_ID__286302EC">
+          <AssociationSet Name="FK__EMAIL__AGENDA_ID__15502E78" Association="Self.FK__EMAIL__AGENDA_ID__15502E78">
             <End Role="AGENDA" EntitySet="AGENDA" />
             <End Role="EMAIL" EntitySet="EMAIL" />
           </AssociationSet>
-          <AssociationSet Name="FK__TELEFONE__AGENDA__25869641" Association="Self.FK__TELEFONE__AGENDA__25869641">
+          <AssociationSet Name="FK__TELEFONE__AGENDA__1273C1CD" Association="Self.FK__TELEFONE__AGENDA__1273C1CD">
             <End Role="AGENDA" EntitySet="AGENDA" />
             <End Role="TELEFONE" EntitySet="TELEFONE" />
           </AssociationSet>
@@ -89,7 +89,7 @@
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="BancoAgendamentoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="AGENDAMENTOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="AGENDA">
           <Key>
             <PropertyRef Name="ID_AGENDA" />
@@ -114,8 +114,8 @@
           <Property Name="NUMERO_EMPRESA" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
           <Property Name="COMPLEMENTO_EMPRESA" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="BAIRRO_EMPRESA" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="EMAIL" Relationship="Self.FK__EMAIL__AGENDA_ID__286302EC" FromRole="AGENDA" ToRole="EMAIL" />
-          <NavigationProperty Name="TELEFONE" Relationship="Self.FK__TELEFONE__AGENDA__25869641" FromRole="AGENDA" ToRole="TELEFONE" />
+          <NavigationProperty Name="EMAIL" Relationship="Self.FK__EMAIL__AGENDA_ID__15502E78" FromRole="AGENDA" ToRole="EMAIL" />
+          <NavigationProperty Name="TELEFONE" Relationship="Self.FK__TELEFONE__AGENDA__1273C1CD" FromRole="AGENDA" ToRole="TELEFONE" />
           <Property Name="FLAG_EXCLUIDO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="EMAIL">
@@ -125,8 +125,8 @@
           <Property Name="ID_EMAIL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TIPO_EMAIL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="AGENDA_ID_AGENDA" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="AGENDA" Relationship="Self.FK__EMAIL__AGENDA_ID__286302EC" FromRole="EMAIL" ToRole="AGENDA" />
           <Property Name="EMAIL1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AGENDA" Relationship="Self.FK__EMAIL__AGENDA_ID__15502E78" FromRole="EMAIL" ToRole="AGENDA" />
         </EntityType>
         <EntityType Name="TELEFONE">
           <Key>
@@ -136,9 +136,9 @@
           <Property Name="TEL" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TIPO_TEL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="AGENDA_ID_AGENDA" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="AGENDA" Relationship="Self.FK__TELEFONE__AGENDA__25869641" FromRole="TELEFONE" ToRole="AGENDA" />
+          <NavigationProperty Name="AGENDA" Relationship="Self.FK__TELEFONE__AGENDA__1273C1CD" FromRole="TELEFONE" ToRole="AGENDA" />
         </EntityType>
-        <Association Name="FK__EMAIL__AGENDA_ID__286302EC">
+        <Association Name="FK__EMAIL__AGENDA_ID__15502E78">
           <End Role="AGENDA" Type="Self.AGENDA" Multiplicity="1" />
           <End Role="EMAIL" Type="Self.EMAIL" Multiplicity="*" />
           <ReferentialConstraint>
@@ -150,7 +150,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TELEFONE__AGENDA__25869641">
+        <Association Name="FK__TELEFONE__AGENDA__1273C1CD">
           <End Role="AGENDA" Type="Self.AGENDA" Multiplicity="1" />
           <End Role="TELEFONE" Type="Self.TELEFONE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -162,15 +162,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="BancoAgendamentoEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="AGENDAMENTOEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AGENDA" EntityType="Self.AGENDA" />
           <EntitySet Name="EMAIL" EntityType="Self.EMAIL" />
           <EntitySet Name="TELEFONE" EntityType="Self.TELEFONE" />
-          <AssociationSet Name="FK__EMAIL__AGENDA_ID__286302EC" Association="Self.FK__EMAIL__AGENDA_ID__286302EC">
+          <AssociationSet Name="FK__EMAIL__AGENDA_ID__15502E78" Association="Self.FK__EMAIL__AGENDA_ID__15502E78">
             <End Role="AGENDA" EntitySet="AGENDA" />
             <End Role="EMAIL" EntitySet="EMAIL" />
           </AssociationSet>
-          <AssociationSet Name="FK__TELEFONE__AGENDA__25869641" Association="Self.FK__TELEFONE__AGENDA__25869641">
+          <AssociationSet Name="FK__TELEFONE__AGENDA__1273C1CD" Association="Self.FK__TELEFONE__AGENDA__1273C1CD">
             <End Role="AGENDA" EntitySet="AGENDA" />
             <End Role="TELEFONE" EntitySet="TELEFONE" />
           </AssociationSet>
@@ -180,9 +180,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="BancoAgendamentoModelStoreContainer" CdmEntityContainer="BancoAgendamentoEntities">
+        <EntityContainerMapping StorageEntityContainer="AGENDAMENTOModelStoreContainer" CdmEntityContainer="AGENDAMENTOEntities">
           <EntitySetMapping Name="AGENDA">
-            <EntityTypeMapping TypeName="BancoAgendamentoModel.AGENDA">
+            <EntityTypeMapping TypeName="AGENDAMENTOModel.AGENDA">
               <MappingFragment StoreEntitySet="AGENDA">
                 <ScalarProperty Name="FLAG_EXCLUIDO" ColumnName="FLAG_EXCLUIDO" />
                 <ScalarProperty Name="ID_AGENDA" ColumnName="ID_AGENDA" />
@@ -209,17 +209,17 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="EMAIL">
-            <EntityTypeMapping TypeName="BancoAgendamentoModel.EMAIL">
+            <EntityTypeMapping TypeName="AGENDAMENTOModel.EMAIL">
               <MappingFragment StoreEntitySet="EMAIL">
-                <ScalarProperty Name="EMAIL1" ColumnName="EMAIL" />
                 <ScalarProperty Name="ID_EMAIL" ColumnName="ID_EMAIL" />
                 <ScalarProperty Name="TIPO_EMAIL" ColumnName="TIPO_EMAIL" />
                 <ScalarProperty Name="AGENDA_ID_AGENDA" ColumnName="AGENDA_ID_AGENDA" />
+                <ScalarProperty Name="EMAIL1" ColumnName="EMAIL" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TELEFONE">
-            <EntityTypeMapping TypeName="BancoAgendamentoModel.TELEFONE">
+            <EntityTypeMapping TypeName="AGENDAMENTOModel.TELEFONE">
               <MappingFragment StoreEntitySet="TELEFONE">
                 <ScalarProperty Name="ID_TELEFONE" ColumnName="ID_TELEFONE" />
                 <ScalarProperty Name="TEL" ColumnName="TEL" />
